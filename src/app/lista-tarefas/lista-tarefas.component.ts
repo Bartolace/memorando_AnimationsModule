@@ -4,13 +4,29 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TarefaService } from 'src/app/service/tarefa.service';
 import { Tarefa } from '../interface/tarefa';
-import { highlightedStateTrigger, checkButtonTrigger, showStateTrigger } from '../animations';
+import {
+  highlightedStateTrigger,
+  checkButtonTrigger,
+  showStateTrigger,
+  filterTrigger,
+  formButtonTrigger,
+  flyInOutTrigger,
+  shakeTrigger,
+} from '../animations';
 
 @Component({
   selector: 'app-lista-tarefas',
   templateUrl: './lista-tarefas.component.html',
   styleUrls: ['./lista-tarefas.component.css'],
-  animations: [highlightedStateTrigger, showStateTrigger, checkButtonTrigger],
+  animations: [
+    highlightedStateTrigger,
+    showStateTrigger,
+    checkButtonTrigger,
+    filterTrigger,
+    formButtonTrigger,
+    flyInOutTrigger,
+    shakeTrigger
+  ],
 })
 export class ListaTarefasComponent implements OnInit {
   listaTarefas: Tarefa[] = [];
@@ -44,13 +60,13 @@ export class ListaTarefasComponent implements OnInit {
     return this.tarefasFiltradas;
   }
 
-  filtrarTarefasPorDescricao(descricao: string){
-    this.campoBusca = descricao.trim().toLowerCase()
-    if(descricao){
-      this.tarefasFiltradas = this.listaTarefas.filter(tarefa =>
+  filtrarTarefasPorDescricao(descricao: string) {
+    this.campoBusca = descricao.trim().toLowerCase();
+    if (descricao) {
+      this.tarefasFiltradas = this.listaTarefas.filter((tarefa) =>
         tarefa.descricao.toLowerCase().includes(this.campoBusca)
-      )
-    }else {
+      );
+    } else {
       this.tarefasFiltradas = this.listaTarefas;
     }
   }
@@ -125,7 +141,7 @@ export class ListaTarefasComponent implements OnInit {
   }
 
   finalizarTarefa(id: number) {
-    this.id = id
+    this.id = id;
     this.service.buscarPorId(id!).subscribe((tarefa) => {
       this.service.atualizarStatusTarefa(tarefa).subscribe(() => {
         this.listarAposCheck();
