@@ -23,23 +23,16 @@
     },
     {
       "id": 5,
-      "descricao": "Trocar lâmpada",
-      "categoria": "Casa",
-      "statusFinalizado": false,
-      "prioridade": "Alta"
-    },
-    {
-      "id": 6,
       "descricao": "Ler",
       "statusFinalizado": false,
       "categoria": "Estudos",
       "prioridade": "Alta"
     },
     {
-      "id": 7,
-      "descricao": "Angular",
+      "id": 6,
+      "descricao": "Pagar contas",
       "statusFinalizado": false,
-      "categoria": "Estudos",
+      "categoria": "Casa",
       "prioridade": "Alta"
     }
   ]
